@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 基本命令 | Hexo</title><meta name="author" content="Leian"><meta name="copyright" content="Leian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 命令一、Linux命令行1.ls -F参数的 ls 命令轻松区分文件和目 目录名后加了正斜线（&#x2F;）   -a 以点号开头的隐藏文件现在都显示出来 -R 递归选项。它列出了当前目录下包含的子目录中的文件。 -l 参数会产生长列表格式的输出，包含了目录中每个文件的更多相关信息。 文件类型，比如目录（d）、文件（-）、字符型文件（c）或块设备（b）； 文件的权限； 文件的硬链接总数； 文件属">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 基本命令 | Hexo</title><meta name="author" content="Leian"><meta name="copyright" content="Leian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 命令一、基础命令1.ls -F参数的 ls 命令轻松区分文件和目 目录名后加了正斜线（&#x2F;）   -a 以点号开头的隐藏文件现在都显示出来 -R 递归选项。它列出了当前目录下包含的子目录中的文件。 -l 参数会产生长列表格式的输出，包含了目录中每个文件的更多相关信息。 文件类型，比如目录（d）、文件（-）、字符型文件（c）或块设备（b）； 文件的权限； 文件的硬链接总数； 文件属主的用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 基本命令">
 <meta property="og:url" content="http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linux 命令一、Linux命令行1.ls -F参数的 ls 命令轻松区分文件和目 目录名后加了正斜线（&#x2F;）   -a 以点号开头的隐藏文件现在都显示出来 -R 递归选项。它列出了当前目录下包含的子目录中的文件。 -l 参数会产生长列表格式的输出，包含了目录中每个文件的更多相关信息。 文件类型，比如目录（d）、文件（-）、字符型文件（c）或块设备（b）； 文件的权限； 文件的硬链接总数； 文件属">
+<meta property="og:description" content="Linux 命令一、基础命令1.ls -F参数的 ls 命令轻松区分文件和目 目录名后加了正斜线（&#x2F;）   -a 以点号开头的隐藏文件现在都显示出来 -R 递归选项。它列出了当前目录下包含的子目录中的文件。 -l 参数会产生长列表格式的输出，包含了目录中每个文件的更多相关信息。 文件类型，比如目录（d）、文件（-）、字符型文件（c）或块设备（b）； 文件的权限； 文件的硬链接总数； 文件属主的用户">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
 <meta property="article:published_time" content="2021-11-19T11:50:43.000Z">
-<meta property="article:modified_time" content="2021-11-20T16:09:51.070Z">
+<meta property="article:modified_time" content="2021-11-26T02:19:13.603Z">
 <meta property="article:author" content="Leian">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-11-21 00:09:51'
+  postUpdate: '2021-11-26 10:19:13'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -146,7 +146,7 @@
       }
     }
     detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/11/06/vcKSei5krwaOm7b.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux 基本命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-11-19T11:50:43.000Z" title="Created 2021-11-19 19:50:43">2021-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-11-20T16:09:51.070Z" title="Updated 2021-11-21 00:09:51">2021-11-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux 基本命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-命令"><a href="#Linux-命令" class="headerlink" title="Linux 命令"></a>Linux 命令</h1><h2 id="一、Linux命令行"><a href="#一、Linux命令行" class="headerlink" title="一、Linux命令行"></a>一、Linux命令行</h2><h3 id="1-ls"><a href="#1-ls" class="headerlink" title="1.ls"></a>1.ls</h3><ol>
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/11/06/vcKSei5krwaOm7b.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux 基本命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-11-19T11:50:43.000Z" title="Created 2021-11-19 19:50:43">2021-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-11-26T02:19:13.603Z" title="Updated 2021-11-26 10:19:13">2021-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux 基本命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-命令"><a href="#Linux-命令" class="headerlink" title="Linux 命令"></a>Linux 命令</h1><h2 id="一、基础命令"><a href="#一、基础命令" class="headerlink" title="一、基础命令"></a>一、基础命令</h2><h3 id="1-ls"><a href="#1-ls" class="headerlink" title="1.ls"></a>1.ls</h3><ol>
 <li>-F<br>参数的 ls 命令轻松区分文件和目<ul>
 <li>目录名后加了正斜线（/）</li>
 </ul>
@@ -188,7 +188,328 @@
 <p><code>-i</code>参数。这样在命令试图覆盖已有的文件时，你就会得到提示。</p>
 <h3 id="5-rm"><a href="#5-rm" class="headerlink" title="5.rm"></a>5.rm</h3><p>-i 命令参数提示你是不是要真的删除该文件。bash shell 中==没有回收站或垃圾箱，文件一旦删除，就无法再找回。==因此，在使用 rm 命令时，要养成总是加入-i 参数的<strong>好习惯。</strong></p>
 <p><strong>-f 参数强制删除。小心为妙！</strong></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Leian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/">http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/19/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-2/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Java多线程(2)</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Java多线程(1)</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/11/06/vcKSei5krwaOm7b.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Leian</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/qixiaoyu0315" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qixiaoyu0315@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Linux 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Linux%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-number">1.1.</span> <span class="toc-text">一、Linux命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ls"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-touch"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-cp"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-mv"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-rm"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.rm</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/19/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-2/" title="Java多线程(2)"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java多线程(2)"/></a><div class="content"><a class="title" href="/2021/11/19/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-2/" title="Java多线程(2)">Java多线程(2)</a><time datetime="2021-11-19T11:50:43.000Z" title="Created 2021-11-19 19:50:43">2021-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/" title="Linux 基本命令"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 基本命令"/></a><div class="content"><a class="title" href="/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/" title="Linux 基本命令">Linux 基本命令</a><time datetime="2021-11-19T11:50:43.000Z" title="Created 2021-11-19 19:50:43">2021-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/" title="Java多线程(1)"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java多线程(1)"/></a><div class="content"><a class="title" href="/2021/11/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/" title="Java多线程(1)">Java多线程(1)</a><time datetime="2021-11-15T06:41:42.000Z" title="Created 2021-11-15 14:41:42">2021-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/12/Redis%E5%AD%A6%E4%B9%A0/" title="Redis五大基本类型及底层结构"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis五大基本类型及底层结构"/></a><div class="content"><a class="title" href="/2021/11/12/Redis%E5%AD%A6%E4%B9%A0/" title="Redis五大基本类型及底层结构">Redis五大基本类型及底层结构</a><time datetime="2021-11-12T06:00:11.000Z" title="Created 2021-11-12 14:00:11">2021-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/11/Git%E5%AD%A6%E4%B9%A0/" title="Git学习"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git学习"/></a><div class="content"><a class="title" href="/2021/11/11/Git%E5%AD%A6%E4%B9%A0/" title="Git学习">Git学习</a><time datetime="2021-11-11T02:42:19.000Z" title="Created 2021-11-11 10:42:19">2021-11-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Leian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+<h3 id="6-ln"><a href="#6-ln" class="headerlink" title="6.ln"></a>6.ln</h3><p>在 Linux 中有两种不同类型的文件链接：</p>
+<ul>
+<li>符号链接(symbolic link)</li>
+<li>硬链接(hard link)</li>
+</ul>
+<h3 id="7-mkdir"><a href="#7-mkdir" class="headerlink" title="7.mkdir"></a>7.mkdir</h3><p>-p 同时创建父目录和其下的子目录</p>
+<p>$ mkdir -p New_Dir/Sub_Dir/Under_Dir</p>
+<h3 id="8-rmdir"><a href="#8-rmdir" class="headerlink" title="8.rmdir"></a>8.rmdir</h3><p>删除空文件夹</p>
+<h3 id="9-file"><a href="#9-file" class="headerlink" title="9.file"></a>9.file</h3><p>确定文件的文件类型。</p>
+<h3 id="10-tail"><a href="#10-tail" class="headerlink" title="10.tail"></a>10.tail</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tail log_file</span><br><span class="line"><span class="comment"># 默认情况是查看此文件最后十行的内容</span></span><br><span class="line">$ tail -n 2 log_file</span><br><span class="line">可以向 tail 命令中加入-n 参数来修改所显示的行数。在下面的例子中，通过加入-n 2 使 tail 命令只显示文件的最后两行：</span><br><span class="line">-f 参数是 tail 命令的一个突出特性。它允许你在其他进程使用该文件时查看文件的内容。tail 命令会保持活动状态，并不断显示添加到文件中的内容。这是实时监测系统日志的绝妙方式。</span><br></pre></td></tr></table></figure>
+
+<p>head 命令，顾名思义，会显示文件开头那些行的内容。默认情况下，它会显示文件前 10 行的文本。类似于 tail 命令，它也支持-n 参数，这样就可以指定想要显示的内容了。</p>
+<p>这两个命令都允许你在破折号后面直接输入想要显示的行数.</p>
+<p>$ head log_file</p>
+<p>$ head -5 log_file</p>
+<h3 id="11-Vim"><a href="#11-Vim" class="headerlink" title="11.Vim"></a>11.Vim</h3><p>对于 vim 的学习，有一个命令是<code>vimtutor</code>。这是一个非常好的边操作边学的教程，大家学习几遍，即可很好的掌握 vim 的大多数基础功能了。如果想看中文的版本，可以执行<code>vimtutor -g zh</code>。</p>
+<h2 id="二、实用命令"><a href="#二、实用命令" class="headerlink" title="二、实用命令"></a>二、实用命令</h2><h3 id="1-ps"><a href="#1-ps" class="headerlink" title="1.ps"></a>1.ps</h3><p>ps 命令只会显示运行在当前控制台下的属于当前用户的进程。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ps -ef <span class="comment">#查看系统上运行的所有进程  -e参数指定显示所有运行在系统上的进程；-f参数则扩展了输出，这些扩展的列包含了有用的信息。</span></span> </span><br><span class="line">UID        PID  PPID  C   STIME   TTY          TIME      CMD </span><br><span class="line">root        1     0   0   11:29    ?        00:00:01   /sbin/init ...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>UID：启动这些进程的用户。</li>
+<li>PID：进程的进程 ID。</li>
+<li>PPID：父进程的进程号（如果该进程是由另一个进程启动的）。</li>
+<li>C：进程生命周期中的 CPU 利用率。</li>
+<li>STIME：进程启动时的系统时间。</li>
+<li>TTY：进程启动时的终端设备。</li>
+<li>TIME：运行进程需要的累计 CPU 时间。</li>
+<li>CMD：启动的程序名称。</li>
+</ul>
+<p>如果想要获得更多的信息，可采用-l 参数，它会产生一个长格式输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ps -l</span><br><span class="line">F S  UID PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY      TIME   CMD</span><br><span class="line">0 S  500 3081  3080  0  80   0 -  1173 <span class="built_in">wait</span> pts/0   00:00:00 bash</span><br><span class="line">0 R  500 4463  3081  1  80   0 -  1116 -    pts/0   00:00:00 ps</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>F：内核分配给进程的系统标记。1 代表 进程被 fork 但没有被执行。4 代表使用了超级管理员的权限。5 代表 1 和 4 都做了。0 没有任何特殊含义，含义为进程被 fork 了，也确实执行了，并且没有超级用户权限。</li>
+<li>S：进程的状态（S 代表在休眠；R 代表正在运行，或正等待运行；Z 代表僵化，进程已结束但父进程已不存在；T 代表停止，I 代表 idle 进程）。</li>
+<li>PRI：进程的优先级（越大的数字代表越低的优先级）。</li>
+<li>NI：谦让度值用来参与决定优先级。越大优先级越低。</li>
+<li>ADDR：进程的内存地址。正在运行的任务将在此列中显示一个破折号（’-‘）</li>
+<li>SZ：所需物理内存页面的大致大小。详情看 vsz 与 rss</li>
+<li>WCHAN：进程休眠的内核函数的地址。</li>
+</ul>
+<h3 id="2-top-监控进程"><a href="#2-top-监控进程" class="headerlink" title="2.top 监控进程"></a>2.top 监控进程</h3><h3 id="3-kill发送信号"><a href="#3-kill发送信号" class="headerlink" title="3.kill发送信号"></a>3.kill发送信号</h3><p>在 Linux 中，进程之间通过信号来通信。进程的信号就是预定义好的一个消息，进程能识别它并决定忽略还是作出反应。进程如何处理信号是由开发人员通过编程来决定的。大多数编写完善的程序都能接收和处理标准 Unix 进程信号。</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>HUP</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INT</td>
+<td>中断</td>
+</tr>
+<tr>
+<td>3</td>
+<td>QUIT</td>
+<td>结束运行</td>
+</tr>
+<tr>
+<td>9</td>
+<td>KILL</td>
+<td>无条件终止</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SEGV</td>
+<td>段错误</td>
+</tr>
+<tr>
+<td>15</td>
+<td>TERM</td>
+<td>尽可能终止</td>
+</tr>
+<tr>
+<td>17</td>
+<td>STOP</td>
+<td>无条件停止运行，但不终止</td>
+</tr>
+<tr>
+<td>18</td>
+<td>TSTP</td>
+<td>停止或暂停，但继续在后台运行</td>
+</tr>
+<tr>
+<td>19</td>
+<td>CONT</td>
+<td>在 STOP 或 TSTP 之后恢复执行</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>HUP</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INT</td>
+<td>中断</td>
+</tr>
+<tr>
+<td>3</td>
+<td>QUIT</td>
+<td>结束运行</td>
+</tr>
+<tr>
+<td>9</td>
+<td>KILL</td>
+<td>无条件终止</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SEGV</td>
+<td>段错误</td>
+</tr>
+<tr>
+<td>15</td>
+<td>TERM</td>
+<td>尽可能终止</td>
+</tr>
+<tr>
+<td>17</td>
+<td>STOP</td>
+<td>无条件停止运行，但不终止</td>
+</tr>
+<tr>
+<td>18</td>
+<td>TSTP</td>
+<td>停止或暂停，但继续在后台运行</td>
+</tr>
+<tr>
+<td>19</td>
+<td>CONT</td>
+<td>在 STOP 或 TSTP 之后恢复执行</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>HUP</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INT</td>
+<td>中断</td>
+</tr>
+<tr>
+<td>3</td>
+<td>QUIT</td>
+<td>结束运行</td>
+</tr>
+<tr>
+<td>9</td>
+<td>KILL</td>
+<td>无条件终止</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SEGV</td>
+<td>段错误</td>
+</tr>
+<tr>
+<td>15</td>
+<td>TERM</td>
+<td>尽可能终止</td>
+</tr>
+<tr>
+<td>17</td>
+<td>STOP</td>
+<td>无条件停止运行，但不终止</td>
+</tr>
+<tr>
+<td>18</td>
+<td>TSTP</td>
+<td>停止或暂停，但继续在后台运行</td>
+</tr>
+<tr>
+<td>19</td>
+<td>CONT</td>
+<td>在 STOP 或 TSTP 之后恢复执行</td>
+</tr>
+</tbody></table>
+<p>-s 参数支持指定其他信号（用信号名或信号值）</p>
+<p>killall 命令，它非常强大，它支持通过进程名而不是 PID 来结束进程。killall 命令也支持通配符，这在系统因负载过大而变得很慢时很有用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ killall http*</span><br></pre></td></tr></table></figure>
+
+<p><strong>以 root 用户身份登录系统时，使用 killall 命令要特别小心，因为很容易就会误用通配符而结束了重要的系统进程。这可能会破坏文件系统。</strong></p>
+<h3 id="grep-搜索"><a href="#grep-搜索" class="headerlink" title="grep 搜索"></a>grep 搜索</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">grep [options] pattern [file]</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep three file1</span></span><br><span class="line">three</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep t file1</span></span><br><span class="line">two</span><br><span class="line">three</span><br><span class="line"><span class="meta">#</span><span class="bash">第一个例子在文件 file1 中搜索能匹配模式 three 的文本。grep 命令输出了匹配了该模式的行。第二个例子在文件 file1 中搜索能匹配模式 t 的文本。这个例子里，file1 中有两行匹配了指定的模式，两行都输出了。由于 grep 命令非常流行，它经历了大量的更新。有很多功能被加进了 grep 命令。如果查看一下它的手册页面，你会发现它是多么的无所不能。</span></span><br><span class="line"></span><br><span class="line">如果要进行反向搜索（输出不匹配该模式的行），可加-v 参数。</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep -v t file1</span></span><br><span class="line">one</span><br><span class="line">four</span><br><span class="line">five</span><br><span class="line"></span><br><span class="line">如果要显示匹配模式的行所在的行号，可加-n 参数</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep -n t file1</span></span><br><span class="line">2:two</span><br><span class="line">3:three</span><br><span class="line"></span><br><span class="line">如果只要知道有多少行含有匹配的模式，可用-c 参数。</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep -c t file1</span></span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">如果要指定多个匹配模式，可用-e 参数来指定每个模式。这个例子输出了含有字符 t 或字符 f 的所有行。</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep -e t -e f file1</span></span><br><span class="line">two</span><br><span class="line">three</span><br><span class="line">four</span><br><span class="line">five</span><br><span class="line"></span><br><span class="line">grep 命令用基本的 Unix 风格正则表达式来匹配模式。</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep [tf] file1</span></span><br><span class="line">two</span><br><span class="line">three</span><br><span class="line">four</span><br><span class="line">five</span><br></pre></td></tr></table></figure>
+
+<h3 id="tar-压缩与归档"><a href="#tar-压缩与归档" class="headerlink" title="tar 压缩与归档"></a>tar 压缩与归档</h3><p>gzip 是非常流行的压缩工具软件包，使用方式也很简单，这个软件包含有下面的工具。</p>
+<ul>
+<li>gzip：用来压缩文件。</li>
+<li>gzcat：用来查看压缩过的文本文件的内容。</li>
+<li>gunzip：用来解压文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gzip myprog <span class="comment">#压缩文件</span></span><br><span class="line">ls -l my*</span><br><span class="line">-rwxrwxr-x 1 rich rich 2197 2007-09-13 11:29 myprog.gz</span><br></pre></td></tr></table></figure>
+
+<p>gzip 命令会压缩你在命令行指定的文件。也可以在命令行指定多个文件名甚至用通配符来一次性批量压缩文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip my*</span><br></pre></td></tr></table></figure>
+
+<h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><h2 id="一、理解Shell"><a href="#一、理解Shell" class="headerlink" title="一、理解Shell"></a>一、理解Shell</h2><h3 id="1-后台模式"><a href="#1-后台模式" class="headerlink" title="1.后台模式"></a>1.后台模式</h3><p>要想将命令置入后台模式，可以在命令末尾加上字符&amp;。把 sleep 命令置入后台模式可以让我们利用 ps 命令来小窥一番。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sleep 3000 &amp;</span><br><span class="line">[1] 2396</span><br><span class="line">$ ps -f</span><br><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">christi+  2338  2337  0 10:13 pts/9    00:00:00 -bash</span><br><span class="line">christi+  2396  2338  0 10:17 pts/9    00:00:00 sleep 3000</span><br><span class="line">christi+  2397  2338  0 10:17 pts/9    00:00:00 ps -f</span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+<p>sleep 命令会在后台（&amp;）睡眠 3000 秒（50 分钟）。当它被置入后台，在 shell CLI 提示符返回之前，会出现两条信息。第一条信息是显示在方括号中的后台作业（background job）号（1）。第二条是后台作业的进程 ID（2396）。</p>
+<p>ps 命令用来显示各种进程。我们可以注意到命令 sleep 3000 已经被列出来了。在第二列显示的进程 ID（PID）和命令进入后台时所显示的 PID 是一样的，都是 2396。</p>
+<p>除了 ps 命令，你也可以使用 jobs 命令来显示后台作业信息。</p>
+<h3 id="jobs-命令"><a href="#jobs-命令" class="headerlink" title="jobs 命令"></a><strong>jobs 命令</strong></h3><p>可以显示出当前运行在后台模式中的所有用户的进程（作业）。</p>
+<h3 id="coproc-命令"><a href="#coproc-命令" class="headerlink" title="coproc 命令"></a>coproc 命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ coproc sleep 10</span><br><span class="line">[1] 2544</span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+<p>除了会创建子 shell 之外，协程基本上就是将命令置入后台模式。当输入 coproc 命令及其参数之后，你会发现启用了一个后台作业。屏幕上会显示出后台作业号（1）以及进程 ID（2544）。jobs 命令能够显示出协程的处理状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">jobs</span></span><br><span class="line">[1]+  Running                 coproc COPROC sleep 10 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中可以看到在子 shell 中执行的后台命令是 coproc COPROC sleep 10。COPROC 是 coproc 命令给进程起的名字。你可以使用命令的扩展语法自己设置这个名字。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ coproc My_Job &#123; sleep 10; &#125;</span><br><span class="line">[1] 2570</span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">jobs</span> [1]+  Running                 coproc My_Job &#123; sleep 10; &#125; &amp;</span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+<p>通过使用扩展语法，协程的名字被设置成 My_Job。这里要注意的是，扩展语法写起来有点麻烦。必须确保在第一个花括号（{）和命令名之间有一个空格。还必须保证命令以分号（;）结尾。另外，分号和闭花括号（}）之间也得有一个空格。</p>
+<h3 id="shell-的内建命令"><a href="#shell-的内建命令" class="headerlink" title="shell 的内建命令"></a>shell 的内建命令</h3><p>外部命令，有时候也被称为文件系统命令，是存在于 bash shell 之外的程序。它们并不是 shell 程序的一部分。外部命令程序通常位于/bin、/usr/bin、/sbin 或/usr/sbin 中。</p>
+<p><code>内建命令</code>和外部命令的区别在于前者不需要使用子进程来执行。它们已经和 shell 编译成了一体，作为 shell 工具的组成部分存在。不需要借助外部程序文件来运行</p>
+<p>要注意，有些命令有多种实现。例如 echo 和 pwd 既有内建命令也有外部命令。两种实现略有不同。要查看命令的不同实现，使用 type 命令的-a 选项。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -a <span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> is a shell <span class="built_in">builtin</span></span><br><span class="line"><span class="built_in">echo</span> is /bin/<span class="built_in">echo</span></span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">which</span> <span class="built_in">echo</span></span><br><span class="line">/bin/<span class="built_in">echo</span></span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">type</span> -a <span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">pwd</span> is a shell <span class="built_in">builtin</span></span><br><span class="line"><span class="built_in">pwd</span> is /bin/<span class="built_in">pwd</span></span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">which</span> <span class="built_in">pwd</span></span><br><span class="line">/bin/<span class="built_in">pwd</span></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+<p>命令 type -a 显示出了每个命令的两种实现。注意，which 命令只显示出了外部命令文件。</p>
+<h4 id="which-和-type-命令"><a href="#which-和-type-命令" class="headerlink" title="which 和 type 命令"></a><strong>which 和 type 命令</strong></h4><p>ps 就是一个外部命令。当外部命令执行时，会创建出一个子进程。这种操作被称为<code>衍生</code>（forking）。你可以使用 which 和 type 命令找到它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> ps</span><br><span class="line">/bin/ps</span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">type</span> -a ps</span><br><span class="line">ps is /bin/ps</span><br><span class="line">$</span><br><span class="line">$ ls -l /bin/ps</span><br><span class="line">-rwxr-xr-x 1 root root 93232 Jan  6 18:32 /bin/ps</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="history-历史记录"><a href="#history-历史记录" class="headerlink" title="history 历史记录"></a>history 历史记录</h4><h2 id="二、环境变量"><a href="#二、环境变量" class="headerlink" title="二、环境变量"></a>二、环境变量</h2><h3 id="1-全局变量"><a href="#1-全局变量" class="headerlink" title="1.全局变量"></a>1.全局变量</h3><p>要查看全局变量，可以使用 env 或 printenv 命令。</p>
+<p>显示个别环境变量的值，可以使用 printenv 命令，但是不要用 env 命令。</p>
+<p>也可以使用 echo 显示变量的值。在这种情况下引用某个环境变量的时候，必须在变量前面加上一个美元符（$）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ printenv HOME</span><br><span class="line">/home/Christine</span><br><span class="line">$</span><br><span class="line">$ env HOME</span><br><span class="line">env: HOME: No such file or directory</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$HOME</span></span><br><span class="line">/home/Christine</span><br><span class="line"><span class="comment">#在变量名前加上$也可在其他命令中作为参数使用</span></span><br><span class="line">$ ls <span class="variable">$HOME</span> <span class="comment"># 等价与ls ~</span></span><br></pre></td></tr></table></figure>
+
+<p>设定全局环境变量的进程所创建的子进程中，该变量都是可见的。创建全局环境变量的方法是先创建一个局部环境变量，然后再把它导出到全局环境中。</p>
+<p><strong>修改子 shell 中全局环境变量并不会影响到父 shell 中该变量的值。除此之外，子 shell 甚至无法使用 export 命令改变父 shell 中全局环境变量的值。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ my_variable=<span class="string">&quot;I am Global now&quot;</span></span><br><span class="line">$ <span class="built_in">export</span> my_variable</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-局部变量"><a href="#2-局部变量" class="headerlink" title="2.局部变量"></a>2.局部变量</h3><p>Linux 系统并没有一个只显示局部环境变量的命令。set 命令会显示为某个特定进程设置的所有环境变量，包括局部变量、全局变量以及用户定义变量。</p>
+<p>所有通过 printenv 命令能看到的全局环境变量都出现在了 set 命令的输出中。但在 set 命令的输出中还有其他一些环境变量，即局部环境变量和用户定义变量。</p>
+<p>set 命令会显示出全局变量、局部变量以及用户定义变量。它还会按照字母顺序对结果进行排序。env 和 printenv 命令同 set 命令的区别在于前两个命令不会对变量排序，也不会输出局部变量和用户定义变量。、</p>
+<p>设置了局部环境变量后，就能在 shell 进程的任何地方使用它了。但是，如果生成了另外一个 子 shell，它在子 shell 中就不可用。当你退出子 shell 并回到原来的 shell 时，这个局部环境变量依然可用。</p>
+<h3 id="3-操作环境变量"><a href="#3-操作环境变量" class="headerlink" title="3.操作环境变量"></a>3.操作环境变量</h3><p>一旦启动了 bash shell（或者执行一个 shell 脚本），就能创建在这个 shell 进程内可见的<code>局部变量</code>了。可以通过等号给环境变量赋值，值可以是数值或字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$my_variable</span></span><br><span class="line">$ my_variable=Hello</span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$my_variable</span></span><br><span class="line">Hello</span><br></pre></td></tr></table></figure>
+
+<p>变量赋一个含有空格的字符串值，<strong>必须用引号来界定字符串的首和尾。</strong>没有单引号的话，bash shell 会以为下一个词是另一个要执行的命令。</p>
+<p>可以用 unset 命令完成这个操作。在 unset 命令中引用环境变量时，记住不要使用$。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$my_variable</span></span><br><span class="line">I am Global now</span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">unset</span> my_variable</span><br><span class="line">$</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$my_variable</span></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在涉及环境变量名时，什么时候该使用$，什么时候不该使用$，实在让人摸不着头脑。记住一点就行了：如果要用到变量，使用$；如果要操作变量，不使用$。这条规则的一个例外就是使用 printenv 显示某个变量的值</p>
+</blockquote>
+<p>在处理全局环境变量时，事情就有点棘手了。如果你是在子进程中删除了一个全局环境变量，这只对子进程有效。该全局环境变量在父进程中依然可用。和修改变量一样，在子 shell 中删除全局变量后，你无法将效果反映到父 shell 中。</p>
+<h3 id="4-默认的环境变量"><a href="#4-默认的环境变量" class="headerlink" title="4.默认的环境变量"></a>4.默认的环境变量</h3><p>其中最重要的一个环境变量为 PATH。当你在 shell 命令行界面中输入一个外部命令时，shell 必须搜索系统来找到对应的程序。PATH 环境变量定义了用于进行命令和程序查找的目录。</p>
+<p>可以把新的搜索目录添加到现有的 PATH 环境变量中，无需从头定义。PATH 中各个目录之间是用冒号分隔的。你只需引用原来的 PATH 值，然后再给这个字符串添加新目录就行了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ PATH=<span class="variable">$PATH</span>:/home/christine/Scripts</span><br></pre></td></tr></table></figure>
+
+<p>一些程序员习惯将单点符也加入 PATH 环境变量。该单点符代表当前目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ PATH=<span class="variable">$PATH</span>:.</span><br></pre></td></tr></table></figure>
+
+<p>如此对 PATH 变量的修改只能持续到终端退出或重启系统。这种效果并不能一直持续。</p>
+<h3 id="5-定位系统环境变量"><a href="#5-定位系统环境变量" class="headerlink" title="5.定位系统环境变量"></a>5.定位系统环境变量</h3><p>在你登入 Linux 系统启动一个 bash shell 时，默认情况下 bash 会在几个文件中查找命令。这些文件叫作启动文件或环境文件。bash 检查的启动文件取决于你启动 bash shell 的方式。启动 bash shell 有 3 种方式：</p>
+<ul>
+<li>登录时作为默认登录 shell</li>
+<li>作为非登录 shell 的交互式 shell</li>
+<li>作为运行脚本的非交互 shell</li>
+</ul>
+<h4 id="5-1登录shell"><a href="#5-1登录shell" class="headerlink" title="5.1登录shell"></a>5.1登录shell</h4><p>当你登录 Linux 系统时，bash shell 会作为登录 shell 启动。登录 shell 会从 5 个不同的启动文件里读取命令：</p>
+<ul>
+<li><p>/etc/profile</p>
+<ul>
+<li><p>/etc/profile 文件是系统上默认的 bash shell 的主启动文件。系统上的每个用户登录时都会执行这个启动文件</p>
+</li>
+<li><p>/etc/profile 文件是 bash shell 默认的的主启动文件。只要你登录了 Linux 系统，bash 就会执行/etc/profile 启动文件中的命令。</p>
+</li>
+</ul>
+</li>
+<li><p>$HOME/.bash_profile</p>
+</li>
+<li><p>$HOME/.bashrc</p>
+</li>
+<li><p>$HOME/.bash_login</p>
+</li>
+<li><p>$HOME/.profile</p>
+</li>
+</ul>
+<p>另外 4 个启动文件是针对用户的，可根据个人需求定制。注意，这四个文件都以点号开头，这说明它们是隐藏文件（不会在通常的 ls 命令输出列表中出现）。它们位于用户的 HOME 目录下，所以每个用户都可以编辑这些文件并添加自己的环境变量，这些环境变量会在每次启动 bash shell 会话时生效。</p>
+<blockquote>
+<p>要留意的是有些 Linux 发行版使用了可拆卸式认证模块（Pluggable Authentication Modules ，PAM）。在这种情况下，PAM 文件会在 bash shell 启动之前处理，这些文件中可能会包含环境变量。PAM 文件包括/etc/environment 文件和$HOME/.pam_environment 文件。PAM 更多的相关信息可以在 <a target="_blank" rel="noopener" href="http://linux-pam.org/">http://linux-pam.org</a> 中找到。</p>
+</blockquote>
+<p><strong>一个供 bash shell 使用（使用.sh 扩展名），一个供 c shell 使用（使用.csh 扩展名）。</strong></p>
+<p><strong>记住，$HOME 表示的是某个用户的主目录。它和波浪号（~）的作用一样。</strong></p>
+<h3 id="交互式-shell-进程"><a href="#交互式-shell-进程" class="headerlink" title="交互式 shell 进程"></a>交互式 shell 进程</h3><p>如果你的 bash shell 不是登录系统时启动的（比如是在命令行提示符下敲入 bash 时启动），那么你启动的 shell 叫作<code>交互式</code> shell。交互式 shell 不会像登录 shell 一样运行，但它依然提供了命令行提示符来输入命令。</p>
+<h3 id="非交互式-shell"><a href="#非交互式-shell" class="headerlink" title="非交互式 shell"></a>非交互式 shell</h3><p>系统执行 shell 脚本时用的就是这种 shell。不同的地方在于它没有命令行提示符。但是当你在系统上运行脚本时，也许希望能够运行一些特定启动的命令。</p>
+<p>为了处理这种情况，bash shell 提供了 BASH_ENV 环境变量。当 shell 启动一个非交互式 shell 进程时，它会检查这个环境变量来查看要执行的启动文件。如果有指定的文件，shell 会执行该文件里的命令，这通常包括 shell 脚本变量设置。</p>
+<h3 id="环境变量持久化"><a href="#环境变量持久化" class="headerlink" title="环境变量持久化"></a>环境变量持久化</h3><p>现在你已经了解了各种 shell 进程以及对应的环境文件，找出永久性环境变量就容易多了。也可以利用这些文件创建自己的永久性全局变量或局部变量。</p>
+<p>对全局环境变量来说（Linux 系统中所有用户都需要使用的变量），可能更倾向于将新的或修改过的变量设置放在/etc/profile 文件中，但这可不是什么好主意。如果你升级了所用的发行版，这个文件也会跟着更新，那你所有定制过的变量设置可就都没有了。</p>
+<p>最好是在/etc/profile.d 目录中创建一个以.sh 结尾的文件。把所有新的或修改过的全局环境变量设置放在这个文件中。</p>
+<p>在大多数发行版中，存储个人用户永久性 bash shell 变量的地方是$HOME/.bashrc文件。这一点适用于所有类型的shell进程。但如果设置了BASH_ENV变量，那么记住，除非它指向的是$HOME/.bashrc，否则你应该将非交互式 shell 的用户变量放在别的地方。</p>
+<blockquote>
+<p>图形化界面组成部分（如 GUI 客户端）的环境变量可能需要在另外一些配置文件中设置，这和设置 bash shell 环境变量的地方可能不一样。</p>
+</blockquote>
+<p>想想之前讲过的 alias 命令设置就是不能持久的。你可以把自己的 alias 设置放在$HOME/.bashrc 启动文件中，使其效果永久化。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Leian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/">http://example.com/2021/11/19/Linux%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/19/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-2/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Java多线程(2)</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Java多线程(1)</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/11/06/vcKSei5krwaOm7b.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Leian</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/qixiaoyu0315" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qixiaoyu0315@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Linux 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">一、基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ls"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-touch"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-cp"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-mv"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-rm"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.rm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ln"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.ln</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-mkdir"><span class="toc-number">1.1.7.</span> <span class="toc-text">7.mkdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-rmdir"><span class="toc-number">1.1.8.</span> <span class="toc-text">8.rmdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-file"><span class="toc-number">1.1.9.</span> <span class="toc-text">9.file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-tail"><span class="toc-number">1.1.10.</span> <span class="toc-text">10.tail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Vim"><span class="toc-number">1.1.11.</span> <span class="toc-text">11.Vim</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">二、实用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ps"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.ps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-top-%E7%9B%91%E6%8E%A7%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.top 监控进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-kill%E5%8F%91%E9%80%81%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.kill发送信号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep-%E6%90%9C%E7%B4%A2"><span class="toc-number">1.2.4.</span> <span class="toc-text">grep 搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E5%BD%92%E6%A1%A3"><span class="toc-number">1.2.5.</span> <span class="toc-text">tar 压缩与归档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell"><span class="toc-number">2.</span> <span class="toc-text">Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%90%86%E8%A7%A3Shell"><span class="toc-number">2.1.</span> <span class="toc-text">一、理解Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%8E%E5%8F%B0%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.后台模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jobs-%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">jobs 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#coproc-%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.3.</span> <span class="toc-text">coproc 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-%E7%9A%84%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.4.</span> <span class="toc-text">shell 的内建命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#which-%E5%92%8C-type-%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">which 和 type 命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#history-%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">history 历史记录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">二、环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.3.</span> <span class="toc-text">3.操作环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%BB%98%E8%AE%A4%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.4.</span> <span class="toc-text">4.默认的环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.5.</span> <span class="toc-text">5.定位系统环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E7%99%BB%E5%BD%95shell"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">5.1登录shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F-shell-%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.2.6.</span> <span class="toc-text">交互式 shell 进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F-shell"><span class="toc-number">2.2.7.</span> <span class="toc-text">非交互式 shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">2.2.8.</span> <span class="toc-text">环境变量持久化</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/23/%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" title="语法笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语法笔记"/></a><div class="content"><a class="title" href="/2021/12/23/%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" title="语法笔记">语法笔记</a><time datetime="2021-12-23T12:18:17.000Z" title="Created 2021-12-23 20:18:17">2021-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/23/%E8%AF%8D%E6%A0%B9%E7%AC%94%E8%AE%B0/" title="词根笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="词根笔记"/></a><div class="content"><a class="title" href="/2021/12/23/%E8%AF%8D%E6%A0%B9%E7%AC%94%E8%AE%B0/" title="词根笔记">词根笔记</a><time datetime="2021-12-23T12:17:48.000Z" title="Created 2021-12-23 20:17:48">2021-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" title="Java虚拟机笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java虚拟机笔记"/></a><div class="content"><a class="title" href="/2021/12/20/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" title="Java虚拟机笔记">Java虚拟机笔记</a><time datetime="2021-12-20T06:50:36.000Z" title="Created 2021-12-20 14:50:36">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/05/vim-%E7%AC%94%E8%AE%B0/" title="vim 笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vim 笔记"/></a><div class="content"><a class="title" href="/2021/12/05/vim-%E7%AC%94%E8%AE%B0/" title="vim 笔记">vim 笔记</a><time datetime="2021-12-05T15:52:45.000Z" title="Created 2021-12-05 23:52:45">2021-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/05/Rabbit-%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0-1/" title="Rabbit 实战指南笔记(1)"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rabbit 实战指南笔记(1)"/></a><div class="content"><a class="title" href="/2021/12/05/Rabbit-%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0-1/" title="Rabbit 实战指南笔记(1)">Rabbit 实战指南笔记(1)</a><time datetime="2021-12-05T14:57:25.000Z" title="Created 2021-12-05 22:57:25">2021-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Leian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
   function butterfly_clock_injector_config(){
     var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
     var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';

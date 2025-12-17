@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>WinStart</title>
+        <item>
+            <title>0.8.6</title>
+            <pubDate>Wed, 17 Dec 2025 21:11:22 +0800</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.8.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.8.6/WinStart.0.8.6.zip" length="4286872" type="application/octet-stream"/>
+        </item>
+    </channel>
+</rss>

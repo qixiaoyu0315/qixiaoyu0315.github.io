@@ -3,12 +3,12 @@
     <channel>
         <title>WinStart</title>
         <item>
-            <title>0.8.8</title>
-            <pubDate>Thu, 18 Dec 2025 20:36:26 +0800</pubDate>
-            <sparkle:version>0.8.8</sparkle:version>
-            <sparkle:shortVersionString>0.8.8</sparkle:shortVersionString>
+            <title>0.8.9</title>
+            <pubDate>Thu, 18 Dec 2025 21:02:10 +0800</pubDate>
+            <sparkle:version>0.8.9</sparkle:version>
+            <sparkle:shortVersionString>0.8.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.8.8/WinStart.zip" length="4309889" type="application/octet-stream" sparkle:edSignature="t22AYhNmvDm6azikzV3m8medkB9WIL+8gXyieakxvzi/eEhBJMm4ZAWfnYauSY/gbt9gUGs7csXaMtE8q3dNBg=="/>
+            <enclosure url="https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.8.9/WinStart.zip" length="4309916" type="application/octet-stream" sparkle:edSignature="KWxSTsWmoPWYzgLLstigAYWV9SFlqLx8IS7AzWq9h5YOOt/HnuUQifrAenShG6IHgwMShivxJ4kh55vDYBZ8Bw=="/>
         </item>
     </channel>
 </rss>

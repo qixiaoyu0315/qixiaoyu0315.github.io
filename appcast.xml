@@ -8,7 +8,7 @@
             <sparkle:version>0.11.3</sparkle:version>
             <sparkle:shortVersionString>0.11.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://cdn.jsdelivr.net/gh/qixiaoyu0315/qixiaoyu0315.github.io@main/WinStart.zip" length="2881602" type="application/octet-stream" sparkle:edSignature="r5O5sGsY+t4ujczO9AOHJ4lpsSUegmKBqlgyb293QQzINbwPDwZvE+mYMJvlqlit2jNMl1j/2e+bOf0NkS5iCQ=="/>
+            <enclosure url="https://gh-proxy.com/https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.11.3/WinStart.zip" length="2881602" type="application/octet-stream" sparkle:edSignature="r5O5sGsY+t4ujczO9AOHJ4lpsSUegmKBqlgyb293QQzINbwPDwZvE+mYMJvlqlit2jNMl1j/2e+bOf0NkS5iCQ=="/>
         </item>
     </channel>
 </rss>

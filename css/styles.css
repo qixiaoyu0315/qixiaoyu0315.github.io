@@ -1,0 +1,1094 @@
+:root {
+    /* 默认夜间模式（深色主题） */
+    --bg-color: #004578;
+    --bg-image: url('../assets/windows-dark.jpg');
+    --start-bg: rgba(0, 0, 0, 0.85);
+    --sidebar-bg: rgba(0, 0, 0, 0.2);
+    --text-color: #ffffff;
+    --subtext-color: #aaaaaa;
+    --taskbar-bg: rgba(0, 0, 0, 0.8);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    
+    --tile-gap: 4px;
+    --accent-blue: #0078d7;
+    --accent-purple: #744da9;
+    --accent-orange: #ca5010;
+    --accent-green: #107c10;
+    --accent-teal: #008272;
+    --accent-red: #e81123;
+    --accent-darkblue: #002050;
+}
+
+[data-theme="light"] {
+    /* 日间模式（浅色主题） */
+    --bg-color: #0078d7;
+    --bg-image: url('../assets/windows-light.jpg');
+    --start-bg: rgba(255, 255, 255, 0.85);
+    --sidebar-bg: rgba(255, 255, 255, 0.3);
+    --text-color: #000000;
+    --subtext-color: #555555;
+    --taskbar-bg: rgba(255, 255, 255, 0.8);
+    --hover-bg: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end; /* 让开始菜单在底部 */
+    overflow: hidden;
+    padding-bottom: 40px; /* 为任务栏留出空间 */
+}
+
+.desktop {
+    width: 100%;
+    height: calc(100vh - 40px);
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.start-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 800px;
+    height: 85%; /* 改为占据桌面高度 of 85% */
+    max-height: 800px; /* 设置一个最大高度防止在大屏幕上过度拉伸 */
+    background: var(--start-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    animation: slideUp 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1100;
+    transition: transform 0.2s ease-in-out, opacity 0.2s;
+}
+
+.start-menu.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--taskbar-bg);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    z-index: 1000;
+}
+
+.start-button {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.start-button:hover {
+    background: var(--hover-bg);
+    color: #00adef;
+}
+
+.taskbar-icons {
+    flex: 1;
+    display: flex;
+    height: 100%;
+}
+
+.taskbar-item {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.taskbar-item:hover {
+    background: var(--hover-bg);
+}
+
+.taskbar-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-blue);
+}
+
+.taskbar-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 10px;
+}
+
+.system-icons {
+    display: flex;
+    gap: 15px;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.clock {
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.clock:hover {
+    background: var(--hover-bg);
+}
+
+.clock .time {
+    font-weight: 500;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    background: var(--sidebar-bg);
+}
+
+.sidebar i {
+    color: var(--text-color);
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sidebar i:hover {
+    background: var(--hover-bg);
+}
+
+/* App List */
+.app-list {
+    width: 250px;
+    padding: 15px;
+    overflow-y: auto;
+    color: var(--text-color);
+    scrollbar-width: thin;
+    scrollbar-color: var(--subtext-color) transparent;
+}
+
+.app-group {
+    margin-bottom: 20px;
+}
+
+.group-title {
+    font-size: 12px;
+    color: var(--subtext-color);
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.app-item {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.app-item i {
+    width: 24px;
+    margin-right: 12px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.app-item:hover {
+    background: var(--hover-bg);
+}
+
+/* Tiles Container */
+.tiles-container {
+    flex: 1;
+    padding: 15px 25px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+.tile-group {
+    margin-bottom: 30px;
+}
+
+.tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: min-content;
+    gap: var(--tile-gap);
+    width: 100%;
+}
+
+/* Tile Base */
+.tile {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    overflow: hidden;
+    user-select: none;
+    color: white;
+}
+
+.tile:hover {
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+}
+
+.tile:active {
+    transform: scale(0.95);
+}
+
+.tile i {
+    font-size: 24px;
+}
+
+.tile-label {
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    font-size: 11px;
+}
+
+/* Tile Sizes */
+.tile-small {
+    grid-column: span 1;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-medium {
+    grid-column: span 2;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-wide {
+    grid-column: span 4;
+    aspect-ratio: 2 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-large {
+    grid-column: span 4;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tile Colors */
+.tile-blue { background-color: var(--accent-blue); }
+.tile-purple { background-color: var(--accent-purple); }
+.tile-orange { background-color: var(--accent-orange); }
+.tile-green { background-color: var(--accent-green); }
+.tile-teal { background-color: var(--accent-teal); }
+.tile-red { background-color: var(--accent-red); }
+.tile-darkblue { background-color: var(--accent-darkblue); }
+
+/* Live Tile Animation (3D Flip) */
+.live-tile {
+    perspective: 1000px;
+}
+
+.tile-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.tile-front, .tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-back {
+    transform: rotateX(180deg);
+}
+
+.live-tile.flipped .tile-content {
+    transform: rotateX(180deg);
+}
+
+/* Custom Content for Live Tiles */
+.weather-info { text-align: center; }
+.temp { font-size: 32px; font-weight: 300; }
+.city { font-size: 14px; }
+
+.tile-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-snippet {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.calendar-day { font-size: 48px; font-weight: bold; }
+.calendar-month { font-size: 18px; text-transform: uppercase; margin-top: -10px; }
+.calendar-detail { padding: 10px; font-size: 12px; }
+
+/* Responsive Adjustments */
+@media (max-width: 850px) {
+    .start-menu {
+        width: 100%;
+        height: 100%;
+        animation: none;
+    }
+    .app-list {
+        display: none;
+    }
+}
+
+/* Window System */
+.window-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 40px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+
+.window-overlay.active {
+    display: flex;
+}
+
+.window {
+    width: 800px;
+    height: 600px;
+    background: var(--start-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    animation: windowOpen 0.2s ease-out;
+    position: relative;
+}
+
+.window.maximized {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    transform: none !important;
+    border: none;
+}
+
+@keyframes windowOpen {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.window-header {
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: move;
+    user-select: none;
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.window-controls {
+    display: flex;
+    height: 100%;
+    cursor: default;
+}
+
+.control-btn {
+    width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.close-btn:hover {
+    background: #e81123 !important;
+    color: white;
+}
+
+.window-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.window-split-view {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.file-sidebar {
+    width: 200px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.content-viewer {
+    flex: 1;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.02);
+    scrollbar-width: thin;
+    position: relative;
+}
+
+.markdown-body {
+    padding: 25px;
+    line-height: 1.6;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.markdown-body ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+.file-list-header {
+    font-size: 12px;
+    color: var(--subtext-color);
+    padding: 15px 10px 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 5px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 2px;
+}
+
+.file-item:hover {
+    background: var(--hover-bg);
+}
+
+.file-item i {
+    color: var(--accent-blue);
+    font-size: 14px;
+}
+
+.file-item.active {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.file-item.active i {
+    color: white;
+}
+
+.empty-message, .loading-message {
+    text-align: center;
+    color: var(--subtext-color);
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+
+.welcome-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.welcome-content {
+    text-align: center;
+    color: white;
+    animation: welcomeFadeIn 1.2s ease-out;
+}
+
+@keyframes welcomeFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.launchpad-icon {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(180deg, #5ec8fb 0%, #007aff 100%);
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px;
+    font-size: 60px;
+    box-shadow: 0 15px 35px rgba(0, 122, 255, 0.3);
+}
+
+.welcome-content h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.welcome-content p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+}
+
+/* macOS Mode Specific Styles */
+body.macos-mode {
+    --bg-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop');
+    --start-bg: rgba(0, 0, 0, 0.2);
+    --text-color: #ffffff;
+    padding-bottom: 0;
+    align-items: center;
+    background-image: var(--bg-image) !important;
+}
+
+body.macos-mode .taskbar {
+    display: none;
+}
+
+/* macOS Launchpad - Liquid Glass Design Language Implementation */
+body.macos-mode .start-menu {
+    border-radius: 40px; /* 更加圆润 */
+    height: 88%;
+    width: 96%;
+    max-width: 1300px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    
+    /* Liquid Glass 核心属性：高透明、高饱和、强模糊 */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(80px) saturate(250%) contrast(110%);
+    -webkit-backdrop-filter: blur(80px) saturate(250%) contrast(110%);
+    
+    /* 玻璃边缘折射感：使用多重内阴影模拟 */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3), /* 顶部高光 */
+        inset 0 -1px 1px rgba(0, 0, 0, 0.1);    /* 底部微弱阴影 */
+    
+    display: flex;
+    overflow: hidden;
+    z-index: 2100;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 顶部流体高光效果 */
+body.macos-mode .start-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.15), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.macos-mode .sidebar {
+    background: rgba(255, 255, 255, 0.03);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2;
+}
+
+body.macos-mode .app-list {
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 2;
+}
+
+body.macos-mode .tiles-container {
+    flex: 1;
+    padding: 100px 50px 50px;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+/* Liquid Glass 风格磁贴 */
+body.macos-mode .tile {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+body.macos-mode .tile:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+body.macos-mode .tile-label {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 隐藏状态下的流畅过渡 */
+body.macos-mode .start-menu.hidden {
+    transform: translate(-50%, 60%) scale(0.92); /* 模仿向下流动的液体感 */
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+}
+
+/* macOS Launchpad 搜索栏 */
+.mac-search-container {
+    display: none;
+    width: 100%;
+    padding: 20px 0;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+body.macos-mode .mac-search-container {
+    display: flex;
+}
+
+.mac-search-bar {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 350px;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mac-search-bar:focus-within {
+    background: rgba(255, 255, 255, 0.15);
+    width: 400px;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mac-search-bar i {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.mac-search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+}
+
+.mac-search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.macos-mode .tiles-container {
+    padding-top: 80px; /* 为搜索栏留出空间 */
+}
+
+/* macOS Top Bar */
+.mac-top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    font-size: 13px;
+    z-index: 2000;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+body.macos-mode .mac-top-bar {
+    display: flex;
+}
+
+.top-bar-left, .top-bar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-bar-left .app-name {
+    font-weight: 700;
+}
+
+/* macOS Top Bar 增强 */
+.top-bar-right {
+    gap: 18px;
+}
+
+.top-bar-right i {
+    font-size: 14px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.top-bar-right i:hover {
+    opacity: 1;
+}
+
+#macClock {
+    font-weight: 500;
+    min-width: 45px;
+}
+
+/* 控制中心图标 */
+.control-center-icon {
+    display: flex;
+    gap: 4px;
+    height: 14px;
+    align-items: center;
+}
+
+.control-center-icon span {
+    width: 14px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+}
+
+/* macOS Dock */
+.mac-dock-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: none;
+    perspective: 1000px;
+}
+
+body.macos-mode .mac-dock-container {
+    display: block;
+}
+
+.mac-dock {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    padding: 10px;
+    border-radius: 24px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dock-item {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1.4), width 0.2s, height 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dock-item:hover {
+    transform: scale(1.5) translateY(-15px);
+    margin: 0 10px;
+}
+
+.dock-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+/* 活跃指示灯 (小圆点) */
+.dock-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.dock-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    align-self: center;
+}
+
+.dock-item::after {
+    content: attr(data-label);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.dock-item:hover::after {
+    opacity: 1;
+}
+
+/* Mode Selection Buttons */
+.mode-selection {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.mode-btn {
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, background 0.2s;
+    color: white;
+}
+
+.win10-btn {
+    background: #0078d7;
+}
+
+.macos-btn {
+    background: #333;
+}
+
+.mode-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+.mode-btn:active {
+    transform: translateY(0);
+}
+
+/* Window Style for macOS */
+body.macos-mode .window-overlay {
+    top: 28px;
+    height: calc(100% - 28px - 78px);
+    align-items: center;
+    justify-content: center;
+}
+
+body.macos-mode .window.maximized {
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+}
+
+body.macos-mode .window {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body.macos-mode .window-header {
+    background: rgba(255, 255, 255, 0.1);
+    height: 38px;
+}
+
+body.macos-mode .window-controls {
+    order: -1;
+    gap: 8px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+}
+
+body.macos-mode .control-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    font-size: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 调整红绿灯顺序: 红(Close) 黄(Min) 绿(Max) */
+body.macos-mode .close-btn { 
+    order: 1; 
+    background: #ff5f56 !important; 
+}
+body.macos-mode .minimize-btn { 
+    order: 2; 
+    background: #ffbd2e !important; 
+}
+body.macos-mode .maximize-btn { 
+    order: 3; 
+    background: #27c93f !important; 
+}
+
+/* 只有在悬停在 window-controls 容器上时才显示图标符号 */
+body.macos-mode .window-controls:hover .control-btn::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 7px;
+    color: rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+body.macos-mode .close-btn::before { content: "\f00d"; }
+body.macos-mode .minimize-btn::before { content: "\f068"; }
+body.macos-mode .maximize-btn::before { content: "\f065"; }
+
+/* 非悬停状态下隐藏 Font Awesome 默认图标 */
+body.macos-mode .control-btn i {
+    display: none;
+}
+
+body.macos-mode .window-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+}

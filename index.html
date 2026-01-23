@@ -1,1044 +1,308 @@
 <!DOCTYPE html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WinStart - 现代 macOS 应用程序启动器</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* 全局样式 - 浅色模式 (Light Mode) */
-      :root {
-        --primary-color: #007aff; /* Apple Blue - 主色调 */
-        --secondary-color: #ff3b30; /* Red Accent */
-        --bg-light: #ffffff; /* White - 核心背景色 */
-        --bg-medium: #f8f8fa; /* Slightly darker background for sections */
-        --text-dark: #1c1c1e; /* Dark primary text */
-        --text-gray: #6e6e73; /* Gray secondary text */
-        --glass-bg: rgba(
-          255,
-          255,
-          255,
-          0.85
-        ); /* Light semi-transparent glass */
-        --tile-bg: rgba(0, 0, 0, 0.03); /* Tile/Hover Background */
-        --border-color: rgba(0, 0, 0, 0.1); /* Light border */
-        --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.08); /* Light mode shadow */
-        --hover-shadow: 0 0 0 1px rgba(0, 122, 255, 0.2),
-          0 5px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Inter", "Noto Sans SC", sans-serif;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        line-height: 1.6;
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-        position: relative;
-      }
-
-      /* 移除动态背景相关的 Canvas 元素 */
-      /* .stars { display: none; } */
-
-      a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
-      section {
-        padding: 100px 0;
-        position: relative;
-        background-color: var(--bg-light);
-      }
-
-      /* --- 固定顶部导航栏 (Main Navigation) --- */
-      #main-nav {
-        position: sticky;
-        top: 0;
-        z-index: 5000;
-        background-color: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
-        padding: 15px 32px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .nav-logo {
-        font-size: 1.3em;
-        font-weight: 900;
-        letter-spacing: -0.5px;
-        color: var(--text-dark);
-      }
-
-      /* 菜单切换按钮 (汉堡菜单) - 默认隐藏 */
-      .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text-dark);
-        padding: 5px;
-        z-index: 5010;
-      }
-      .menu-toggle svg {
-        width: 28px;
-        height: 28px;
-      }
-
-      /* 导航链接容器 - 桌面默认行为 */
-      .nav-links {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-        transition: all 0.3s ease-in-out;
-      }
-      .nav-links a {
-        color: var(--text-gray);
-        font-weight: 500;
-        padding: 5px 0;
-        transition: color 0.3s, border-bottom 0.3s;
-      }
-      .nav-links a:hover {
-        color: var(--primary-color);
-      }
-
-      /* --- 滚动动画 CSS --- */
-      .fade-in-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
-          transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: opacity, transform;
-      }
-
-      .fade-in-scroll.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* --- 顶部拆分布局 (Hero + Ko-fi) --- */
-      /* 新增：应用图标样式 - 尺寸已翻倍 (160px) 并增加了圆角 (40px) */
-      .app-icon {
-        width: 160px; /* 80px -> 160px (双倍大小) */
-        height: 160px; /* 80px -> 160px (双倍大小) */
-        margin-bottom: 25px;
-        border-radius: 40px; /* 20px -> 40px (圆角调整) */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* 软阴影 */
-        transition: transform 0.3s;
-      }
-
-      .app-icon:hover {
-        transform: scale(1.05);
-      }
-      /* 结束新增应用图标样式 */
-
-      #top-split-area {
-        min-height: calc(100vh - 70px);
-        display: flex;
-        gap: 60px;
-        padding-top: 50px;
-        padding-bottom: 50px;
-      }
-
-      .split-left-2-3 {
-        flex: 2;
-        max-width: 66.66%;
-        padding-right: 32px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-      }
-
-      .split-right-1-3 {
-        flex: 1;
-        max-width: 33.33%;
-        padding-left: 32px;
-        padding-top: 20px;
-      }
-
-      .hero-content-text h1 {
-        font-size: 6em;
-        font-weight: 900;
-        margin-bottom: 10px;
-        color: var(--text-dark);
-        letter-spacing: -3px;
-        line-height: 1;
-      }
-
-      .support-widget-container {
-        position: sticky;
-        top: 100px;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--shadow-subtle);
-        max-width: 100%;
-        margin: 0;
-        background-color: var(--bg-light);
-        border: 1px solid var(--border-color);
-      }
-
-      /* --- 动态转场叙事 (Dynamic Storytelling) --- */
-      #dynamic-story {
-        padding: 0;
-        min-height: 400vh;
-        position: relative;
-        background-color: var(--bg-medium); /* 浅灰色背景 */
-      }
-
-      .story-sticky-wrapper {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .story-panel {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 5%;
-        opacity: 0;
-        transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        pointer-events: none;
-        background-color: var(--bg-medium); /* 确保背景色一致 */
-      }
-
-      .story-panel.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .panel-content {
-        display: flex;
-        width: 100%;
-        max-width: 1280px;
-        gap: 80px;
-        align-items: center;
-        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1),
-          opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        opacity: 0;
-      }
-
-      .story-panel.active .panel-content {
-        opacity: 1;
-        transform: none;
-      }
-
-      /* 移动/淡入效果 */
-      .story-panel.image-left .panel-text {
-        transform: translateX(50px);
-        opacity: 0;
-        transition-delay: 0.1s;
-      }
-      .story-panel.image-left .panel-image {
-        transform: translateX(-50px);
-        opacity: 0;
-        transition-delay: 0.1s;
-      }
-
-      .story-panel:not(.image-left) .panel-text {
-        transform: translateX(-50px);
-        opacity: 0;
-        transition-delay: 0.1s;
-      }
-      .story-panel:not(.image-left) .panel-image {
-        transform: translateX(50px);
-        opacity: 0;
-        transition-delay: 0.1s;
-      }
-
-      .story-panel.active .panel-text,
-      .story-panel.active .panel-image {
-        transform: translateX(0) !important;
-        opacity: 1 !important;
-      }
-
-      .panel-text {
-        flex: 1;
-        z-index: 10;
-      }
-
-      .panel-image {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .panel-image img {
-        width: 100%;
-        height: 450px;
-        object-fit: cover;
-        border-radius: 16px;
-        box-shadow: var(--shadow-subtle);
-        transition: transform 0.5s;
-        cursor: zoom-in; /* 增加放大手势提示 */
-      }
-
-      .panel-text h3 {
-        font-size: 3.5em;
-        font-weight: 900;
-        margin-bottom: 20px;
-        line-height: 1.1;
-        color: var(--primary-color);
-      }
-      .panel-text p {
-        font-size: 1.3em;
-        color: var(--text-gray);
-        line-height: 1.5;
-      }
-
-      .image-left .panel-image {
-        order: -1;
-      }
-
-      /* --- 路线图 (Roadmap) --- */
-      #roadmap {
-        padding: 100px 0 150px;
-        background-color: var(--bg-light); /* 白色背景 */
-      }
-
-      #roadmap h2 {
-        font-size: 4.5em;
-        text-align: center;
-        margin-bottom: 30px;
-        font-weight: 900;
-        letter-spacing: -2px;
-        color: var(--text-dark);
-      }
-
-      .roadmap-list {
-        display: flex;
-        flex-direction: column;
-        gap: 120px;
-        margin-top: 80px;
-      }
-
-      .roadmap-section {
-        padding: 40px 0;
-        border-left: 5px solid rgba(0, 122, 255, 0.4); /* 苹果蓝 */
-        padding-left: 50px;
-      }
-
-      .roadmap-section h3 {
-        font-size: 3.5em;
-        font-weight: 900;
-        margin-bottom: 50px;
-        color: var(--text-dark);
-        line-height: 1;
-      }
-
-      .roadmap-section ul {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px 80px;
-      }
-
-      .roadmap-section li {
-        padding: 15px 0;
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        align-items: flex-start;
-        font-size: 1.1em;
-        color: var(--text-gray);
-      }
-
-      .roadmap-section li .status {
-        font-size: 1.5em;
-        margin-right: 20px;
-        line-height: 1;
-        flex-shrink: 0;
-        opacity: 0.8;
-      }
-
-      .roadmap-section .done .status {
-        color: #38c172;
-      }
-      .roadmap-section .todo .status {
-        color: var(--secondary-color);
-      }
-
-      /* --- 底部/模态框 --- */
-      footer {
-        background-color: var(--bg-medium);
-        text-align: center;
-        padding: 60px 0 30px;
-        border-top: 1px solid var(--border-color);
-      }
-
-      /* 模态框样式 */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.9);
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* --- 响应式设计 - 针对中大型平板 (Max Width: 1100px) --- */
-      @media (max-width: 1100px) {
-        #top-split-area {
-          flex-direction: column;
-          min-height: auto;
-          padding-top: 40px;
-          gap: 50px;
-        }
-        .split-left-2-3,
-        .split-right-1-3 {
-          max-width: 100%;
-          flex: none;
-          padding-left: 0;
-          padding-right: 0;
-        }
-        .support-widget-container {
-          position: static;
-          margin: 0 auto;
-          max-width: 600px;
-        }
-        .hero-content-text h1 {
-          font-size: 5em;
-          letter-spacing: -2px;
-        }
-      }
-
-      /* --- 响应式设计 - 针对平板和小型桌面 (Max Width: 900px) --- */
-      @media (max-width: 900px) {
-        #main-nav {
-          padding: 15px 20px;
-        }
-        .nav-links {
-          gap: 15px;
-        }
-        .story-panel {
-          padding: 0 20px;
-        }
-        .panel-content {
-          flex-direction: column;
-          text-align: center;
-          gap: 40px;
-        }
-        .panel-text h3 {
-          font-size: 2.5em;
-        }
-        .panel-image img {
-          max-width: 90%;
-          height: 300px;
-        }
-        .roadmap-section {
-          padding-left: 20px;
-        }
-        .roadmap-section ul {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* --- 响应式设计 - 针对移动设备 (Max Width: 640px) --- */
-      @media (max-width: 640px) {
-        .container {
-          padding: 0 16px;
-        }
-        section {
-          padding: 60px 0;
-        }
-
-        /* 导航栏调整：显示汉堡菜单，隐藏链接 */
-        #main-nav {
-          padding: 10px 16px;
-          justify-content: space-between;
-        }
-
-        .menu-toggle {
-          display: block; /* 显示汉堡按钮 */
-        }
-
-        .nav-links {
-          position: absolute;
-          top: 59px;
-          left: 0;
-          width: 100%;
-          flex-direction: column;
-          background-color: var(--glass-bg);
-          backdrop-filter: blur(8px);
-          border-top: 1px solid var(--border-color);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-
-          /* 折叠状态 */
-          max-height: 0;
-          overflow: hidden;
-          padding: 0;
-          opacity: 0;
-          transition: max-height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-            opacity 0.5s ease-in-out;
-        }
-
-        .nav-links.open {
-          max-height: 400px;
-          padding: 10px 0;
-          opacity: 1;
-        }
-
-        .nav-links a {
-          width: 100%;
-          padding: 12px 24px;
-          border-bottom: 1px solid var(--border-color);
-          font-size: 1.1em;
-          text-align: left;
-        }
-        .nav-links a:last-child {
-          border-bottom: none;
-        }
-
-        /* 英雄区调整 */
-        .hero-content-text h1 {
-          font-size: 3.5em;
-          letter-spacing: -1px;
-        }
-        /* 调整移动端图标大小 */
-        .app-icon {
-          width: 128px; /* 64px -> 128px (双倍大小) */
-          height: 128px; /* 64px -> 128px (双倍大小) */
-          margin-bottom: 15px;
-          border-radius: 30px; /* 调整圆角 */
-        }
-        .hero-content-text .tagline {
-          font-size: 1.4em;
-          margin-bottom: 20px;
-        }
-        .hero-content-text p {
-          font-size: 1em;
-          margin: 10px auto 30px;
-        }
-        .cta-button {
-          padding: 10px 25px !important;
-          font-size: 0.9em;
-        }
-
-        /* 叙事区面板调整 */
-        .panel-content {
-          gap: 20px;
-        }
-        .panel-text h3 {
-          font-size: 2em;
-          margin-bottom: 10px;
-        }
-        .panel-text p {
-          font-size: 1em;
-        }
-        .panel-image img {
-          height: 250px;
-        }
-
-        /* 路线图调整 */
-        #roadmap h2 {
-          font-size: 3em;
-        }
-        .roadmap-list {
-          gap: 80px;
-        }
-        .roadmap-section {
-          padding-left: 0px;
-          border-left: none;
-        }
-        .roadmap-section h3 {
-          font-size: 2em;
-          margin-bottom: 30px;
-          border-left: 5px solid rgba(0, 122, 255, 0.4); /* 苹果蓝 */
-          padding-left: 10px;
-        }
-        .roadmap-section li {
-          font-size: 0.95em;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- 顶部固定导航栏 (Main Navigation) -->
-    <header id="main-nav">
-      <div class="nav-logo">WinStart.APP</div>
-
-      <!-- 移动设备菜单切换按钮 -->
-      <button
-        id="menu-toggle"
-        class="menu-toggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-      >
-        <svg
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
-
-      <!-- 导航链接容器 -->
-      <div id="nav-menu" class="nav-links">
-        <a href="#dynamic-story">核心功能</a>
-        <a href="#roadmap">开发路线</a>
-        <a href="#support">支持我</a>
-        <a
-          href="https://b23.tv/tbbOI3u"
-          target="_blank"
-          title="我的 Bilibili 空间"
-          >Bilibili</a
-        >
-        <a
-          href="https://t.me/+mDCEolqdaD04NTRl"
-          target="_blank"
-          title="加入 Telegram 群组"
-          >Telegram</a
-        >
-      </div>
-    </header>
-
-    <!-- 顶部分栏布局 (Top Split Area) - Hero Content (2/3) + Ko-fi Widget (1/3) -->
-    <section id="top-split-area" class="container">
-      <!-- 左侧 2/3: 英雄区内容 -->
-      <div class="split-left-2-3">
-        <div class="hero-content-text">
-          <!-- 重点修改区域：应用图标的图片源 (src) 已替换并调整尺寸 -->
-          <img
-            src="https://s2.loli.net/2025/12/10/DYgBtyz49b6pliK.png"
-            alt="WinStart App Icon"
-            class="app-icon fade-in-scroll"
-            style="transition-delay: 0s"
-            onerror="this.onerror=null; this.src='https://placehold.co/160x160/2962FF/ffffff?text=W+S'"
-          />
-          <!-- 如果图片加载失败，显示新的占位图 -->
-          <h1 class="fade-in-scroll" style="transition-delay: 0.1s">
-            WinStart
-          </h1>
-          <p
-            class="tagline fade-in-scroll"
-            style="
-              font-size: 1.8em;
-              font-weight: 500;
-              margin-bottom: 40px;
-              color: var(--text-gray);
-              transition-delay: 0.2s;
-            "
-          >
-            效率与美学的融合 — 告别凌乱的 Launchpad。
-          </p>
-          <!-- 突出产品下载的 CTA -->
-          <a
-            href="#"
-            class="cta-button fade-in-scroll"
-            style="
-              background-color: var(--primary-color);
-              color: var(--bg-light);
-              padding: 12px 30px;
-              border-radius: 9999px;
-              font-weight: 700;
-              box-shadow: 0 10px 30px rgba(0, 122, 255, 0.2);
-              transition-delay: 0.4s;
-            "
-            target="_blank"
-          >
-            ⬇️ 立即下载 WinStart V2.1.0
-          </a>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win10 风格官网</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- 引入 Font Awesome 用于图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 引入 marked.js 用于解析 Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- 欢迎页面 -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <div class="launchpad-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h1>MacOS 启动台项目</h1>
+            <p>请选择您想体验的桌面风格</p>
+            <div class="mode-selection">
+                <button class="mode-btn win10-btn" id="selectWin10">
+                    <i class="fab fa-windows"></i> Windows 10
+                </button>
+                <button class="mode-btn macos-btn" id="selectMacOS">
+                    <i class="fab fa-apple"></i> macOS
+                </button>
+            </div>
         </div>
-      </div>
-
-      <!-- 右侧 1/3: Ko-fi 支持组件 -->
-      <div class="split-right-1-3" id="support">
-        <h2 class="fade-in-scroll">支持持续开发</h2>
-        <p
-          class="fade-in-scroll"
-          style="
-            font-size: 1em;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            text-align: center;
-          "
-        >
-          您的支持对我至关重要，感谢您的慷慨！
-        </p>
-
-        <div class="support-widget-container fade-in-scroll">
-          <iframe
-            id="kofiframe"
-            src="https://ko-fi.com/winstart/?hidefeed=true&widget=true&embed=true&preview=true"
-            style="
-              border: none;
-              width: 100%;
-              padding: 0;
-              background: var(--bg-medium);
-            "
-            height="712"
-            title="支持 WinStart (Ko-fi Widget)"
-          >
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- 动态转场叙事区 (Dynamic Storytelling Section) - 全宽展示 -->
-    <section id="dynamic-story">
-      <div class="story-sticky-wrapper">
-        <!-- Panel 1: 核心磁贴 (Text Right, Image Left) -->
-        <div class="story-panel image-left" id="panel-1">
-          <div class="panel-content">
-            <div
-              class="panel-image"
-              onclick="openModal('https://s2.loli.net/2025/12/04/lOyhcQaNRF457ow.png')"
-            >
-              <img
-                src="https://s2.loli.net/2025/12/04/lOyhcQaNRF457ow.png"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x450/dddddd/111111?text=Image%20Failed%20to%20Load'"
-                alt="WinStart 核心磁贴界面"
-              />
-            </div>
-            <div class="panel-text">
-              <h3>01. 核心磁贴</h3>
-              <p>
-                从 Windows 汲取灵感，为 macOS 带来久违的效率工具。支持 1x1 到
-                4x2
-                等多种尺寸磁贴，提供无与伦比的桌面自由度。**您的桌面，由您定义。**
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 2: 沉浸式设计 (Text Left, Image Right) -->
-        <div class="story-panel" id="panel-2">
-          <div class="panel-content">
-            <div class="panel-text">
-              <h3>02. 玻璃拟态美学</h3>
-              <p>
-                采用 macOS 原生 SwiftUI 混合架构，实现完美的高保真玻璃拟态效果
-                (Glassmorphism)。无边框模式、系统级亮/暗色切换，让您的启动器与
-                Mac 系统融为一体，**真正做到沉浸式体验**。
-              </p>
-            </div>
-            <div
-              class="panel-image"
-              onclick="openModal('https://s2.loli.net/2025/12/04/C6wH2nVKyozDW8X.png')"
-            >
-              <img
-                src="https://s2.loli.net/2025/12/04/C6wH2nVKyozDW8X.png"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x450/bbbbbb/000000?text=Image%20Failed%20to%20Load'"
-                alt="WinStart 玻璃拟态美学界面"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 3: 快速导航侧边栏 (Text Right, Image Left) -->
-        <div class="story-panel image-left" id="panel-3">
-          <div class="panel-content">
-            <div
-              class="panel-image"
-              onclick="openModal('https://s2.loli.net/2025/12/04/NiXRlxUIAQb5jSo.png')"
-            >
-              <img
-                src="https://s2.loli.net/2025/12/04/NiXRlxUIAQb5jSo.png"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x450/cccccc/333333?text=Image%20Failed%20to%20Load'"
-                alt="WinStart 快速导航侧边栏"
-              />
-            </div>
-            <div class="panel-text">
-              <h3>03. 疾速侧边栏</h3>
-              <p>
-                通过可折叠侧边栏和字母索引，您可以立即跳转到任何应用分组。告别繁琐的滑动查找，实现应用的**零延迟启动**。同时支持强大的实时搜索功能。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 4: 文件夹与分组 (Text Left, Image Right) -->
-        <div class="story-panel" id="panel-4">
-          <div class="panel-content">
-            <div class="panel-text">
-              <h3>04. 智能文件夹管理</h3>
-              <p>
-                提供文件夹磁贴，可容纳多个应用，并支持自动重命名和智能分组。当文件夹内只剩一个应用时，它会自动优化转回应用磁贴，**一切为你着想**。
-              </p>
-            </div>
-            <div
-              class="panel-image"
-              onclick="openModal('https://s2.loli.net/2025/12/04/VJiv6WngMwT5sCq.png')"
-            >
-              <img
-                src="https://s2.loli.net/2025/12/04/VJiv6WngMwT5sCq.png"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x450/aaaaaa/222222?text=Image%20Failed%20to%20Load'"
-                alt="WinStart 智能文件夹管理"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 路线图/待办清单 (Roadmap Section) - 全宽展示 -->
-    <section id="roadmap">
-      <div class="container">
-        <h2 class="fade-in-scroll">WinStart 未来蓝图</h2>
-        <p
-          class="subtitle fade-in-scroll"
-          style="
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 1.5em;
-            max-width: 800px;
-            margin: 0 auto 80px;
-          "
-        >
-          我们始终致力于提供最完善的 macOS
-          启动器解决方案，以下是我们已完成和即将实现的功能。
-        </p>
-
-        <div class="roadmap-list">
-          <div class="roadmap-section done">
-            <h3 class="fade-in-scroll">版本核心功能 (已完成)</h3>
-            <ul>
-              <li class="fade-in-scroll">
-                <span class="status done">✓</span> 系统级的亮/暗色切换
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.1s">
-                <span class="status done">✓</span> 实现最新的半透明玻璃效果
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.2s">
-                <span class="status done">✓</span> 多种尺寸的磁贴和文件夹支持
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.3s">
-                <span class="status done">✓</span> ESC 快捷键快速呼出/关闭功能
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.4s">
-                <span class="status done">✓</span> App 后缀 `.app`
-                的隐藏显示配置
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.5s">
-                <span class="status done">✓</span>
-                文件夹内应用智能管理和自动转换
-              </li>
-            </ul>
-          </div>
-
-          <div class="roadmap-section todo">
-            <h3 class="fade-in-scroll" style="color: var(--secondary-color)">
-              🚀 未来拓展计划 (TODO)
-            </h3>
-            <ul>
-              <li class="fade-in-scroll">
-                <span class="status todo">○</span>
-                增加右键直接**彻底卸载**应用的功能
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.1s">
-                <span class="status todo">○</span>
-                优化流畅度，改进进入、退出动画效果
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.2s">
-                <span class="status todo">○</span>
-                增加设置页面，支持配置个性化选项
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.3s">
-                <span class="status todo">○</span> JSON
-                备份/导入功能，支持云同步
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.4s">
-                <span class="status todo">○</span>
-                自定义磁贴图标样式、颜色、背景等
-              </li>
-              <li class="fade-in-scroll" style="transition-delay: 0.5s">
-                <span class="status todo">○</span> 支持 5 指或 4 指手势打开/关闭
-                (需辅助功能权限)
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 底部/版权信息 -->
-    <footer>
-      <div class="container fade-in-scroll">
-        <p style="font-size: 0.85em; color: var(--text-gray)">
-          WinStart | Designed by MarkWens | 基于 Apple UI 标准重构 | &copy; 2024
-          All rights reserved.
-        </p>
-      </div>
-    </footer>
-
-    <!-- 图片放大模态框 - 保持不变 -->
-    <div id="imageModal" class="modal" onclick="closeModal(event)">
-      <span
-        class="close"
-        style="
-          position: absolute;
-          top: 30px;
-          right: 50px;
-          color: #fff;
-          font-size: 60px;
-          font-weight: 300;
-          transition: 0.3s;
-          z-index: 10001;
-          opacity: 0.8;
-        "
-        >&times;</span
-      >
-      <img
-        class="modal-content"
-        id="modalImage"
-        style="
-          margin: auto;
-          display: block;
-          width: 95%;
-          max-width: 1400px;
-          max-height: 95vh;
-          object-fit: contain;
-          border-radius: 12px;
-        "
-      />
     </div>
 
-    <script>
-      // --- 滚动动画 (Scroll Reveal) JS 逻辑 ---
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            rootMargin: "0px",
-            threshold: 0.1,
-          }
-        );
+    <!-- macOS 顶部导航栏 -->
+    <div class="mac-top-bar" id="macTopBar">
+        <div class="top-bar-left">
+            <i class="fab fa-apple"></i>
+            <span class="app-name">Finder</span>
+            <span>文件</span>
+            <span>编辑</span>
+            <span>查看</span>
+            <span>转到</span>
+            <span>窗口</span>
+            <span>帮助</span>
+        </div>
+        <div class="top-bar-right">
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+            <i class="fas fa-search"></i>
+            <div class="control-center-icon">
+                <i class="fas fa-sliders-h"></i>
+            </div>
+            <span id="macClock">12:00</span>
+        </div>
+    </div>
 
-        document.querySelectorAll(".fade-in-scroll").forEach((element) => {
-          observer.observe(element);
-        });
-      });
+    <!-- macOS Dock 栏 -->
+    <div class="mac-dock-container" id="macDock">
+        <div class="mac-dock">
+            <div class="dock-item" data-label="Finder"><img src="https://img.icons8.com/color/512/finder.png" alt="Finder"></div>
+            <div class="dock-item" id="macLaunchpadBtn" data-label="启动台"><img src="https://img.icons8.com/color/512/rocket--v1.png" alt="Launchpad"></div>
+            <div class="dock-item" data-label="Safari"><img src="https://img.icons8.com/color/512/safari.png" alt="Safari"></div>
+            <div class="dock-item" id="macUpdateLogDockBtn" data-label="更新日志"><img src="https://img.icons8.com/color/512/notes.png" alt="Update Log"></div>
+            <div class="dock-divider"></div>
+            <div class="dock-item" data-label="废纸篓"><img src="https://img.icons8.com/color/512/trash.png" alt="Trash"></div>
+        </div>
+    </div>
 
-      // --- 动态转场叙事 (Dynamic Storytelling) JS 逻辑 ---
-      document.addEventListener("DOMContentLoaded", () => {
-        const dynamicStory = document.getElementById("dynamic-story");
-        const panels = document.querySelectorAll(".story-panel");
-        const numPanels = panels.length;
+    <div class="desktop">
+        <div class="start-menu hidden" id="startMenu">
+            <!-- macOS 搜索栏 (仅在 macos 模式下显示) -->
+            <div class="mac-search-container">
+                <div class="mac-search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜索应用...">
+                </div>
+            </div>
 
-        const updateStory = () => {
-          const rect = dynamicStory.getBoundingClientRect();
-          const sectionTop = rect.top;
-          const sectionHeight = dynamicStory.offsetHeight;
-          const windowHeight = window.innerHeight;
+            <div class="sidebar">
+                <div class="sidebar-top">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="sidebar-bottom">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-cog" id="settingsBtn"></i>
+                    <i class="fas fa-power-off"></i>
+                </div>
+            </div>
+            
+            <div class="app-list">
+                <div class="app-group">
+                    <div class="group-title">社交媒体</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">B</div>
+                    <div class="app-item" data-url="https://space.bilibili.com/3690976784681729"><i class="fab fa-bilibili"></i>Bilibili</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">D</div>
+                    <div class="app-item" data-url="https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases"><i class="fa-solid fa-download"></i>Download</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">G</div>
+                    <div class="app-item" data-url="https://github.com/qixiaoyu0315"><i class="fab fa-github"></i>GitHub</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">R</div>
+                    <div class="app-item" data-url="https://www.reddit.com/r/MacWinStart/"><i class="fa-brands fa-reddit-alien"></i>Reddit</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">E</div>
+                    <div class="app-item" data-url="mailto:gemmaparker0315@gmail.com"><i class="fas fa-envelope"></i>Email</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">T</div>
+                    <div class="app-item" data-url="https://t.me/+mDCEolqdaD04NTRl"><i class="fa-brands fa-telegram"></i>Telegram</div>
+                </div>
+                <div class="app-group">
+                    <div class="group-title">Y</div>
+                    <div class="app-item" data-url="https://www.youtube.com/@winstart-w6w"><i class="fa-brands fa-youtube"></i>YouTube</div>
+                </div>
+            </div>
 
-          // 检查元素是否在视口范围内
-          if (sectionTop > windowHeight || rect.bottom < 0) return;
+            <div class="tiles-container">
+                <div class="tile-group">
+                    <div class="group-title">生活动态</div>
+                    <div class="tiles-grid">
+                        <!-- 第一行：Medium(2) + Small(1) + Small(1) + Medium(2) = 6列 -->
+                        <div class="tile tile-medium tile-blue live-tile" data-speed="3000">
+                            <div class="tile-content">
+                                <div class="tile-front">
+                                    <i class="fas fa-sun"></i>
+                                    <span class="tile-label">天气</span>
+                                </div>
+                                <div class="tile-back">
+                                    <div class="weather-info">
+                                        <div class="temp">25°C</div>
+                                        <div class="city">北京</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-          // 计算滚动进度（0 到 1）
-          let progress =
-            (windowHeight - sectionTop) / (sectionHeight + windowHeight);
-          progress = Math.max(0, Math.min(1, progress));
+                        <div class="tile tile-small tile-purple">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
 
-          const panelDuration = 1 / numPanels;
-          let activeIndex = Math.floor(progress / panelDuration);
+                        <div class="tile tile-medium tile-teal">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="tile-label">Microsoft Store</span>
+                        </div>
 
-          // 确保在滚动到最后时，最后一个面板保持激活
-          if (
-            progress > (numPanels - 1) * panelDuration &&
-            activeIndex === numPanels - 1
-          ) {
-            activeIndex = numPanels - 1;
-          }
+                        <!-- 第二行：Wide(4) + Medium(2) = 6列 -->
+                        <div class="tile tile-wide tile-green live-tile" data-speed="4000">
+                            <div class="tile-content">
+                                <div class="tile-front">
+                                    <i class="fas fa-images"></i>
+                                    <span class="tile-label">照片</span>
+                                </div>
+                                <div class="tile-back">
+                                    <img src="https://picsum.photos/310/150?random=1" alt="Random Photo">
+                                </div>
+                            </div>
+                        </div>
 
-          panels.forEach((panel, index) => {
-            // 当面板处于激活状态时，显示内容
-            if (index === activeIndex) {
-              panel.classList.add("active");
-            } else {
-              panel.classList.remove("active");
-            }
-          });
-        };
+                        <!-- 新增：更新日志磁贴 -->
+                        <div class="tile tile-medium tile-purple" id="updateLogTile">
+                            <i class="fas fa-file-alt"></i>
+                            <span class="tile-label">更新日志</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile-group">
+                    <div class="group-title">办公效率</div>
+                    <div class="tiles-grid">
+                        <!-- 第一行：Wide(4) + Medium(2) = 6列 -->
+                        <div class="tile tile-wide tile-red live-tile" data-speed="5000">
+                            <div class="tile-content">
+                                <div class="tile-front">
+                                    <i class="fas fa-newspaper"></i>
+                                    <span class="tile-label">资讯</span>
+                                </div>
+                                <div class="tile-back">
+                                    <div class="news-snippet">今日头条：Win10 风格网页模板发布！</div>
+                                </div>
+                            </div>
+                        </div>
 
-        window.addEventListener("scroll", updateStory);
-        updateStory(); // 初始化一次
-      });
+                        <div class="tile tile-medium tile-blue">
+                            <i class="fas fa-envelope"></i>
+                            <span class="tile-label">邮件</span>
+                        </div>
 
-      // --- 移动导航栏切换 JS 逻辑 ---
-      document.addEventListener("DOMContentLoaded", () => {
-        const menuToggle = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
+                        <!-- 第二行：Large(4) + Medium(2) = 6列 -->
+                        <div class="tile tile-wide tile-darkblue live-tile" data-speed="6000">
+                            <div class="tile-content">
+                                <div class="tile-front">
+                                    <div class="calendar-day">23</div>
+                                    <div class="calendar-month">一月</div>
+                                    <span class="tile-label">日历</span>
+                                </div>
+                                <div class="tile-back">
+                                    <div class="calendar-detail">
+                                        <p>10:00 团队会议</p>
+                                        <p>14:00 项目发布</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tile tile-medium tile-orange">
+                            <i class="fas fa-tasks"></i>
+                            <span class="tile-label">待办事项</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile-group">
+                    <div class="group-title">生活动态</div>
+                    <div class="tiles-grid">
+                        <!-- 第一行：Medium(2) + Small(1) + Small(1) + Medium(2) = 6列 -->
+                        <div class="tile tile-small tile-purple">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tile tile-small tile-orange">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="taskbar">
+        <div class="start-button" id="startButton">
+            <i class="fab fa-windows"></i>
+        </div>
+        <div class="taskbar-icons">
+            <div class="taskbar-item"><i class="fab fa-edge"></i></div>
+            <div class="taskbar-item"><i class="fas fa-folder"></i></div>
+            <div class="taskbar-item"><i class="fas fa-store"></i></div>
+            <!-- 新增：更新日志任务栏图标 -->
+            <div class="taskbar-item" id="updateLogTaskbarItem" style="display: none;">
+                <i class="fas fa-file-alt"></i>
+            </div>
+        </div>
+        <div class="taskbar-right">
+            <div class="system-icons">
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <div class="clock" id="clock">
+                <div class="time">12:00</div>
+                <div class="date">2026/1/23</div>
+            </div>
+        </div>
+    </div>
 
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("open");
-            const isExpanded = navMenu.classList.contains("open");
-            menuToggle.setAttribute("aria-expanded", isExpanded);
-          });
+    <!-- 弹出窗口：更新日志 -->
+    <div class="window-overlay" id="windowOverlay">
+        <div class="window" id="updateLogWindow">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fas fa-file-alt"></i>
+                    <span>更新日志</span>
+                </div>
+                <div class="window-controls">
+                    <div class="control-btn minimize-btn"><i class="fas fa-minus"></i></div>
+                    <div class="control-btn maximize-btn"><i class="far fa-square"></i></div>
+                    <div class="control-btn close-btn" id="closeWindowBtn"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="window-split-view">
+                    <div class="file-sidebar">
+                        <div class="file-list-header">更新日志目录</div>
+                        <div class="file-list" id="markdownFileList">
+                            <div class="loading-message">正在读取目录...</div>
+                        </div>
+                    </div>
+                    <div class="content-viewer">
+                        <div id="markdownContent" class="markdown-body">
+                            <div class="empty-message">请选择一个文件查看内容</div>
+                        </div>
+                        <iframe id="htmlViewer" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-          // 点击链接后自动收起菜单
-          navMenu.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-              if (navMenu.classList.contains("open")) {
-                navMenu.classList.remove("open");
-                menuToggle.setAttribute("aria-expanded", "false");
-              }
-            });
-          });
-        }
-      });
-
-      // --- 图片模态框 JS 逻辑 ---
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImage");
-
-      function openModal(imgSrc) {
-        modal.style.display = "flex";
-        modalImg.src = imgSrc;
-      }
-
-      function closeModal(event) {
-        // 只有点击背景或关闭按钮时才关闭
-        if (
-          event.target === modal ||
-          event.target.className.includes("close")
-        ) {
-          modal.style.display = "none";
-        }
-      }
-    </script>
-  </body>
+    <script src="js/markdown-config.js"></script>
+    <script src="js/markdown-data.js"></script>
+    <script src="js/script.js"></script>
+</body>
 </html>

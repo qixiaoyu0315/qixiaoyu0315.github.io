@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filename.endsWith('.html')) {
             markdownContent.style.display = 'none';
             htmlViewer.style.display = 'block';
-            htmlViewer.src = `markdown/${filename}`;
+            htmlViewer.src = `markdown/${encodeURIComponent(filename)}`;
         } else {
             htmlViewer.style.display = 'none';
             markdownContent.style.display = 'block';

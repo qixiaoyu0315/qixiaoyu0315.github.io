@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态春联 Widget</title>
+    <style>
+        :root {
+            --default-red: #d32f2f;
+            --default-color: #ffca28;
+            --default-shadow: rgba(0,0,0,0.3);
+            --border-width: clamp(5px, 1.2vmin, 18px);
+        }
+
+        html, body {
+            margin: 0; padding: 0; background: transparent;
+            overflow: hidden; display: flex; justify-content: center;
+            align-items: center; height: 100vh; width: 100vw;
+            box-sizing: border-box;
+        }
+
+        .couplet-widget {
+            background-color: var(--dynamic-bg, var(--default-red));
+            color: var(--dynamic-color, var(--default-color));
+            border: var(--border-width) solid var(--dynamic-color, var(--default-color));
+            box-shadow: 0 4px 25px var(--dynamic-shadow, var(--default-shadow));
+            font-family: "Kaiti", "STKaiti", "楷体", serif;
+            font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            box-sizing: border-box;
+            position: relative; z-index: 1;
+        }
+
+        /* 基础纸张底纹层 */
+        .pattern-layer {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1; opacity: 0.15; pointer-events: none;
+        }
+
+        /* 文字包装盒 */
+        .char-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; 
+        }
+
+        /* 团花 SVG 基础样式 */
+        .wadang-svg {
+            position: absolute;
+            width: 130%; height: 130%;
+            z-index: -1;
+            opacity: 0.35;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.2;
+        }
+
+        /* --- 布局控制 --- */
+        .type-banner {
+            width: 95vw; height: clamp(80px, 35vh, 400px); 
+            padding: 0 5vw; border-radius: 4px;
+        }
+        .type-banner .text-content { display: flex; flex-direction: row; gap: 2vw; }
+
+        .type-vertical {
+            height: 96vh; width: auto; min-width: 15vh;
+            padding: 5vh 1.5vh; border-radius: 4px;
+        }
+        .type-vertical .text-content { display: flex; flex-direction: column; gap: 1.5vh; }
+
+        .type-fu {
+            width: 72vmin; height: 72vmin; transform: rotate(45deg);
+            border-width: calc(var(--border-width) * 1.2);
+        }
+        .type-fu .text-content { display: flex; transform: rotate(-45deg); }
+
+        .char-box span { line-height: 1; z-index: 2; }
+
+        /* 10 种底纹背景 (示例) */
+        .style-1 { background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0); background-size: 20px 20px; } 
+        .style-9 { filter: contrast(150%); background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3Crect width='100%25' height='100%25' /%3E%3C/svg%3E"); }
+    </style>
+</head>
+<body>
+    <div id="app" class="couplet-widget">
+        <div id="pattern-bg" class="pattern-layer"></div>
+        <div id="text-container" class="text-content"></div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('type') || 'banner';
+        const text = params.get('text') || (type === 'fu' ? '福' : '一马当先');
+        const bgParam = params.get('bg');
+        const colorParam = params.get('color');
+        const shadowParam = params.get('shadow');
+        const styleIndex = params.get('style') || '1';
+        const wadangPattern = params.get('pattern') || '1'; // 瓦当模式
+
+        const app = document.getElementById('app');
+        const container = document.getElementById('text-container');
+        const patternBg = document.getElementById('pattern-bg');
+
+        const formatColor = (c) => (c && /^[0-9a-fA-F]{3,6}$/.test(c)) ? '#' + c : c;
+
+        if (bgParam) app.style.setProperty('--dynamic-bg', formatColor(bgParam));
+        if (colorParam) app.style.setProperty('--dynamic-color', formatColor(colorParam));
+        if (shadowParam === 'none') app.style.boxShadow = 'none';
+        else if (shadowParam) app.style.setProperty('--dynamic-shadow', formatColor(shadowParam));
+
+        patternBg.classList.add('style-' + styleIndex);
+
+        // 团花博物馆 (SVG 模板库)
+        const wadangLibrary = {
+            '1': `
+                <svg class="wadang-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" stroke-dasharray="3,3" />
+                    <circle cx="50" cy="50" r="38" opacity="0.4" stroke-width="0.8" />
+                    <path d="M50 4 L50 15 M96 50 L85 50 M50 96 L50 85 M4 50 L15 50" />
+                </svg>`,
+            '2': `
+                <svg class="wadang-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" stroke-width="2" />
+                    <circle cx="50" cy="50" r="42" stroke-width="0.5" opacity="0.5" />
+                    <circle cx="50" cy="50" r="34" stroke-dasharray="1,4" stroke-width="3" />
+                </svg>`,
+            '3': `
+                <svg class="wadang-svg" viewBox="0 0 100 100">
+                    <path d="M10 50 A40 40 0 1 1 90 50 A40 40 0 1 1 10 50" stroke-width="1" />
+                    <path d="M25 25 Q50 10 75 25 M75 75 Q50 90 25 75" opacity="0.4" />
+                    <circle cx="50" cy="50" r="5" fill="currentColor" opacity="0.2" />
+                </svg>`,
+            '4': `
+                <svg class="wadang-svg" viewBox="0 0 100 100">
+                    <path d="M50 10 V90 M10 50 H90" stroke-width="0.5" opacity="0.3" />
+                    <rect x="15" y="15" width="70" height="70" rx="35" stroke-width="1.2" />
+                </svg>`
+        };
+
+        const selectedWadang = wadangPattern === 'none' ? '' : (wadangLibrary[wadangPattern] || wadangLibrary['1']);
+
+        // 生成带团花的汉字
+        text.split('').forEach(char => {
+            const charBox = document.createElement('div');
+            charBox.className = 'char-box';
+            charBox.innerHTML = selectedWadang + `<span>${char}</span>`;
+            container.appendChild(charBox);
+        });
+
+        // 动态字号计算
+        if (type === 'banner') {
+            app.classList.add('type-banner');
+            const size = Math.min(18, 80 / text.length); 
+            app.style.fontSize = size + 'vh';
+        } else if (type === 'fu') {
+            app.classList.add('type-fu');
+            app.style.fontSize = '52vmin';
+            if (params.get('reverse') === 'true') container.style.transform = 'rotate(135deg)';
+        } else {
+            app.classList.add('type-vertical');
+            const size = Math.min(10.5, 82 / text.length); 
+            app.style.fontSize = size + 'vh';
+        }
+    </script>
+</body>
+</html>

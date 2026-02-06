@@ -79,8 +79,62 @@
         .char-box span { line-height: 1; z-index: 2; }
 
         /* 10 种底纹背景 (示例) */
-        .style-1 { background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0); background-size: 20px 20px; } 
-        .style-9 { filter: contrast(150%); background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3Crect width='100%25' height='100%25' /%3E%3C/svg%3E"); }
+        /* 1. 经典波点 */
+        .style-1 { 
+            background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0); 
+            background-size: 20px 20px; 
+        }
+
+        /* 2. 垂直细线条 */
+        .style-2 { 
+            background-image: linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); 
+            background-size: 20px 20px; 
+        }
+
+        /* 3. 经典方格网 */
+        .style-3 { 
+            background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), 
+                            linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); 
+            background-size: 20px 20px; 
+        }
+
+        /* 4. 斜向条纹 */
+        .style-4 { 
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px); 
+        }
+
+        /* 5. 蜂窝六角感（利用菱形叠加） */
+        .style-5 { 
+            background: 
+                radial-gradient(circle at 100% 50%, transparent 20%, rgba(255,255,255,.03) 21%, rgba(255,255,255,.03) 34%, transparent 35%, transparent),
+                radial-gradient(circle at 0% 50%, transparent 20%, rgba(255,255,255,.03) 21%, rgba(255,255,255,.03) 34%, transparent 35%, transparent);
+            background-size: 40px 40px;
+        }
+
+        /* 6. 复古交叉线 */
+        .style-6 { 
+            background: radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent),
+                        radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent) 25px 25px;
+            background-size: 50px 50px;
+        }
+
+        /* 7. 现代大波点 */
+        .style-7 { 
+            background-image: radial-gradient(rgba(255,255,255,.05) 2px, transparent 2px); 
+            background-size: 40px 40px; 
+        }
+
+        /* 8. 柔和渐变底色（非纹理） */
+        .style-8 { 
+            background: radial-gradient(circle at center, rgba(50, 50, 50, 0.2) 0%, transparent 70%); 
+        }
+
+        /* 9. SVG 噪点纹理（你保留的那个） */
+        .style-9 { 
+            filter: contrast(150%); 
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3Crect width='100%25' height='100%25' /%3E%3C/svg%3E"); 
+            opacity: 0.05; /* 噪点通常建议降低不透明度，否则太刺眼 */
+        }
     </style>
 </head>
 <body>

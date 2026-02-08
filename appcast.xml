@@ -3,12 +3,12 @@
     <channel>
         <title>WinStart</title>
         <item>
-            <title>0.11.16</title>
-            <pubDate>Sun, 08 Feb 2026 22:13:41 +0800</pubDate>
-            <sparkle:version>0.11.16</sparkle:version>
-            <sparkle:shortVersionString>0.11.16</sparkle:shortVersionString>
+            <title>0.11.18</title>
+            <pubDate>Sun, 08 Feb 2026 22:47:20 +0800</pubDate>
+            <sparkle:version>0.11.18</sparkle:version>
+            <sparkle:shortVersionString>0.11.18</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://gh-proxy.com/https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.11.16/WinStart.zip" length="3362260" type="application/octet-stream" sparkle:edSignature="DM7PJPw6oKV1A3n43rQPehCo/HGJsbihegIizX2wFjy0LekMgEmIB+iedchceWQ1yPtw4NlrSmkqcrKHYGyGCg=="/>
+            <enclosure url="https://gh-proxy.com/https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.11.18/WinStart.zip" length="3373936" type="application/octet-stream" sparkle:edSignature="kEJp6QuUftbzEzIK+LLOf1uKftjolg3OJOdLn4UzWki4S7zTa6LDBfwS7j/+GXyYJIZJRp5wNLHm+oIJ9DV/Dg=="/>
         </item>
     </channel>
 </rss>

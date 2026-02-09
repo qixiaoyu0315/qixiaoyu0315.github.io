@@ -4,11 +4,11 @@
         <title>WinStart</title>
         <item>
             <title>0.11.26</title>
-            <pubDate>Mon, 09 Feb 2026 01:04:39 +0800</pubDate>
+            <pubDate>Mon, 09 Feb 2026 21:19:01 +0800</pubDate>
             <sparkle:version>0.11.26</sparkle:version>
             <sparkle:shortVersionString>0.11.26</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://gh-proxy.com/https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.11.26/WinStart.zip" length="3382908" type="application/octet-stream" sparkle:edSignature="8t4rmCLAhUYwG7LTV4fLxUQ5J4+lZ8gGLVAno3x0JRFkbEht/uTWGTKrLh7oeCVvMbBTSM2prPM7aHYceoc7Dg=="/>
+            <enclosure url="https://github.com/qixiaoyu0315/qixiaoyu0315.github.io/releases/download/0.11.26/WinStart.zip" length="3385526" type="application/octet-stream" sparkle:edSignature="KGlwgIquMDWWuV0vfnOojL6+nKRfyD91T4ksrw8HQw97JS7Mq0tKu+I50J2EWmPxRG3eNq1QSvDmyXqLteC6Aw=="/>
         </item>
     </channel>
 </rss>
